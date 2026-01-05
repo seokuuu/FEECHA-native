@@ -1,6 +1,7 @@
 export { Button } from "./Button";
 export { Input } from "./Input";
 export { SearchBar } from "./SearchBar";
+export { SearchInput } from "./SearchInput";
 export { Card } from "./Card";
 export { Chip } from "./Chip";
 export { Badge } from "./Badge";
@@ -12,3 +13,8 @@ export { Divider } from "./Divider";
 export { Loading } from "./Loading";
 export { EmptyState } from "./EmptyState";
 export { TouchableCard } from "./TouchableCard";
+export { VendorCard } from "./VendorCard";
+export { ChatBubble } from "./ChatBubble";
+export { PromotionBanner } from "./PromotionBanner";
+export { QuotationListItem } from "./QuotationListItem";
+export { VendorInfoBlock } from "./VendorInfoBlock";

@@ -1,31 +1,72 @@
-import type { NavigatorScreenParams } from "@react-navigation/native";
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import type { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
+import type { NavigatorScreenParams } from '@react-navigation/native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
-export type RootStackParamList = {
+// Auth Stack
+export type AuthStackParamList = {
   Onboarding: undefined;
-  MainTabs: NavigatorScreenParams<MainTabParamList>;
-  SearchFilter: undefined;
-  TruckDetail: { truckId: string };
-  Booking: { truckId: string };
+  Login: undefined;
+  Signup: undefined;
 };
 
-export type MainTabParamList = {
+// Client Tab
+export type ClientTabParamList = {
   Home: undefined;
-  Search: undefined;
-  Wishlist: undefined;
+  Requests: undefined;
   Bookings: undefined;
-  Profile: undefined;
+  MyPage: undefined;
 };
 
-export type RootStackScreenProps<T extends keyof RootStackParamList> =
-  NativeStackScreenProps<RootStackParamList, T>;
+// Vendor Tab
+export type VendorTabParamList = {
+  Dashboard: undefined;
+  Quotations: undefined;
+  Calendar: undefined;
+  MyPage: undefined;
+};
 
-export type MainTabScreenProps<T extends keyof MainTabParamList> =
-  BottomTabScreenProps<MainTabParamList, T>;
+// Main Stack (역할에 따라 다른 Tab + 공통 화면)
+export type MainStackParamList = {
+  // Tabs
+  ClientTab: NavigatorScreenParams<ClientTabParamList>;
+  VendorTab: NavigatorScreenParams<VendorTabParamList>;
+
+  // Common Modal/Stack Screens
+  VendorDetail: { vendorId: string };
+  RequestDetail: { requestId: string };
+  RequestCreate: undefined;
+  QuotationDetail: { quotationId: string };
+  QuotationCreate: { requestId: string };
+  BookingDetail: { bookingId: string };
+  ChatRoom: { roomId: string };
+  ReviewWrite: { bookingId: string };
+  ProfileEdit: undefined;
+};
+
+// Root Navigator
+export type RootNavigatorParamList = {
+  Auth: NavigatorScreenParams<AuthStackParamList>;
+  Main: NavigatorScreenParams<MainStackParamList>;
+};
+
+// Screen Props
+export type AuthStackScreenProps<T extends keyof AuthStackParamList> =
+  NativeStackScreenProps<AuthStackParamList, T>;
+
+export type ClientTabScreenProps<T extends keyof ClientTabParamList> =
+  BottomTabScreenProps<ClientTabParamList, T>;
+
+export type VendorTabScreenProps<T extends keyof VendorTabParamList> =
+  BottomTabScreenProps<VendorTabParamList, T>;
+
+export type MainStackScreenProps<T extends keyof MainStackParamList> =
+  NativeStackScreenProps<MainStackParamList, T>;
+
+export type RootNavigatorScreenProps<T extends keyof RootNavigatorParamList> =
+  NativeStackScreenProps<RootNavigatorParamList, T>;
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList extends RootNavigatorParamList {}
   }
 }

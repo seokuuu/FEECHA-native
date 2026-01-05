@@ -1,30 +1,32 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import type { RootStackParamList } from "./types";
-import { OnboardingPage } from "../../pages/onboarding";
-import { SearchFilterPage } from "../../pages/search-filter";
-import { TruckDetailPage } from "../../pages/truck-detail";
-import { BookingPage } from "../../pages/booking";
-import { BottomTabNavigator } from "./BottomTabNavigator";
+import { useEffect } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import type { RootNavigatorParamList } from './types';
+import { useAuthStore } from '@/entities/auth/model';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+import { AuthNavigator } from './AuthNavigator';
+import { MainNavigator } from './MainNavigator';
 
-export const RootNavigator = () => {
+const Stack = createNativeStackNavigator<RootNavigatorParamList>();
+
+export function RootNavigator() {
+  const { isAuthenticated, loadStoredAuth } = useAuthStore();
+
+  // 앱 시작시 저장된 인증 정보 로드
+  useEffect(() => {
+    loadStoredAuth();
+  }, []);
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Onboarding"
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="Onboarding" component={OnboardingPage} />
-        <Stack.Screen name="MainTabs" component={BottomTabNavigator} />
-        <Stack.Screen name="SearchFilter" component={SearchFilterPage} />
-        <Stack.Screen name="TruckDetail" component={TruckDetailPage} />
-        <Stack.Screen name="Booking" component={BookingPage} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      {isAuthenticated ? (
+        <Stack.Screen name="Main" component={MainNavigator} />
+      ) : (
+        <Stack.Screen name="Auth" component={AuthNavigator} />
+      )}
+    </Stack.Navigator>
   );
-};
+}
