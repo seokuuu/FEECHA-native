@@ -16,7 +16,13 @@
       "Bash(npm start)",
       "Bash(kill:*)",
       "Bash(rm:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(node:*)",
+      "Bash(command:*)"
     ],
     "deny": [],
     "ask": []
