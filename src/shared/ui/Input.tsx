@@ -34,10 +34,10 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
-  const getBorderColor = () => {
-    if (error) return "border-red-500";
+  const getBorderClass = () => {
+    if (error) return "border-error";
     if (isFocused) return "border-primary";
-    return "border-gray-200";
+    return "border-gray-3";
   };
 
   return (
@@ -46,7 +46,7 @@ export const Input: React.FC<InputProps> = ({
         <Text className="text-text-primary font-medium mb-2">{label}</Text>
       )}
       <View
-        className={`bg-white border ${getBorderColor()} rounded-xl px-4 py-3 flex-row items-center ${
+        className={`bg-white border ${getBorderClass()} rounded-extra-large px-4 py-3 flex-row items-center ${
           multiline ? "min-h-[100px]" : ""
         }`}
       >

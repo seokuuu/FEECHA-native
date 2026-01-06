@@ -17,23 +17,32 @@ export const ChatBubble: React.FC<ChatBubbleProps> = ({
   senderImage,
   showAvatar = true,
 }) => {
-  const bubbleColor = isOwn ? "bg-blue-500" : "bg-gray-100";
-  const textColor = isOwn ? "text-white" : "text-gray-900";
-  const timeColor = isOwn ? "text-blue-200" : "text-gray-500";
+  const bubbleStyles = {
+    client: "bg-blue",
+    vendor: "bg-gray-1",
+  };
+
+  const textStyles = {
+    client: "text-white",
+    vendor: "text-dark",
+  };
+
+  const bubbleClass = isOwn ? bubbleStyles.client : bubbleStyles.vendor;
+  const textClass = isOwn ? textStyles.client : textStyles.vendor;
 
   if (isOwn) {
     // 클라이언트 (내 메시지) - 오른쪽 정렬, 파란색
     return (
       <View className="flex-row justify-end items-end mb-3">
         <View className="max-w-[75%]">
-          <View className={`${bubbleColor} rounded-2xl rounded-br-sm px-4 py-3`}>
-            <Text className={`${textColor} text-base`}>{message.content}</Text>
+          <View className={`${bubbleClass} rounded-extra-extra-large rounded-br-sm px-4 py-3`}>
+            <Text className={`${textClass} text-base`}>{message.content}</Text>
           </View>
           <View className="flex-row justify-end items-center mt-1">
             {message.isRead && (
-              <Text className="text-xs text-blue-500 mr-2">읽음</Text>
+              <Text className="text-xs text-blue mr-2">읽음</Text>
             )}
-            <Text className="text-xs text-gray-500">
+            <Text className="text-xs text-gray-5">
               {new Date(message.createdAt).toLocaleTimeString("ko-KR", {
                 hour: "2-digit",
                 minute: "2-digit",
@@ -56,8 +65,8 @@ export const ChatBubble: React.FC<ChatBubbleProps> = ({
               className="w-10 h-10 rounded-full"
             />
           ) : (
-            <View className="w-10 h-10 rounded-full bg-gray-300 items-center justify-center">
-              <Text className="text-gray-600 font-semibold">
+            <View className="w-10 h-10 rounded-full bg-gray-3 items-center justify-center">
+              <Text className="text-gray-6 font-semibold">
                 {senderName?.charAt(0) || "?"}
               </Text>
             </View>
@@ -67,12 +76,12 @@ export const ChatBubble: React.FC<ChatBubbleProps> = ({
 
       <View className="max-w-[75%]">
         {senderName && (
-          <Text className="text-xs text-gray-600 mb-1 ml-1">{senderName}</Text>
+          <Text className="text-xs text-gray-6 mb-1 ml-1">{senderName}</Text>
         )}
-        <View className={`${bubbleColor} rounded-2xl rounded-bl-sm px-4 py-3`}>
-          <Text className={`${textColor} text-base`}>{message.content}</Text>
+        <View className={`${bubbleClass} rounded-extra-extra-large rounded-bl-sm px-4 py-3`}>
+          <Text className={`${textClass} text-base`}>{message.content}</Text>
         </View>
-        <Text className="text-xs text-gray-500 mt-1 ml-1">
+        <Text className="text-xs text-gray-5 mt-1 ml-1">
           {new Date(message.createdAt).toLocaleTimeString("ko-KR", {
             hour: "2-digit",
             minute: "2-digit",

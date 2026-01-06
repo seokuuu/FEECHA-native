@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --COLOR-PRIMARY-DARK: #BA7108;
+  --COLOR-PRIMARY: #F5A623;
+  --COLOR-PRIMARY-MID: #F7B443;
+  --COLOR-PRIMARY-LIGHT: #FBD99A;
+  --COLOR-PRIMARY-LIGHT-MUTED: #FEF7ED;
+
+  /* Blue (Chat Client) */
+  --COLOR-BLUE: #2196F3;
+  --COLOR-BLUE-LIGHT: #E3F2FD;
+
+  /* Gray Scale */
+  --COLOR-GRAY-1: #F9F9F9;
+  --COLOR-GRAY-2: #F5F5F5;
+  --COLOR-GRAY-3: #E0E0E0;
+  --COLOR-GRAY-4: #D1D5DB;
+  --COLOR-GRAY-5: #9CA3AF;
+  --COLOR-GRAY-6: #666666;
+  --COLOR-DARK: #1A1A1A;
+
+  /* Text Colors */
+  --COLOR-TEXT-PRIMARY: #1A1A1A;
+  --COLOR-TEXT-SECONDARY: #666666;
+  --COLOR-TEXT-MUTED: #999999;
+
+  /* Semantic Colors */
+  --COLOR-WHITE: #FFFFFF;
+  --COLOR-ERROR: #EF4444;
+  --COLOR-SUCCESS: #10B981;
+  --COLOR-WARNING: #F59E0B;
+  --COLOR-INFO: #3B82F6;
+
+  /* Background */
+  --COLOR-BACKGROUND: #F9F9F9;
+  --COLOR-CARD: #FFFFFF;
+}

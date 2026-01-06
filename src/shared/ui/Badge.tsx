@@ -15,36 +15,21 @@ export const Badge: React.FC<BadgeProps> = ({
   className = "",
 }) => {
   const variantStyles = {
-    primary: "bg-primary",
-    success: "bg-green-500",
-    warning: "bg-yellow-500",
-    info: "bg-blue-500",
-    default: "bg-gray-200",
-  };
-
-  const textColorStyles = {
-    primary: "text-white",
-    success: "text-white",
-    warning: "text-white",
-    info: "text-white",
-    default: "text-gray-700",
+    primary: "bg-primary text-white",
+    success: "bg-success text-white",
+    warning: "bg-warning text-white",
+    info: "bg-info text-white",
+    default: "bg-gray-2 text-gray-6",
   };
 
   const sizeStyles = {
-    sm: "px-2 py-0.5",
-    md: "px-3 py-1",
-  };
-
-  const textSizeStyles = {
-    sm: "text-xs",
-    md: "text-sm",
+    sm: "px-2 py-0.5 text-xs",
+    md: "px-3 py-1 text-sm",
   };
 
   return (
-    <View
-      className={`${variantStyles[variant]} ${sizeStyles[size]} rounded-full self-start ${className}`}
-    >
-      <Text className={`${textColorStyles[variant]} ${textSizeStyles[size]} font-semibold`}>
+    <View className={`${variantStyles[variant]} ${sizeStyles[size]} rounded-full self-start ${className}`}>
+      <Text className="font-semibold">
         {children}
       </Text>
     </View>

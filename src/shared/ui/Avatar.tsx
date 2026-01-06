@@ -37,7 +37,7 @@ export const Avatar: React.FC<AvatarProps> = ({
 
   return (
     <View
-      className={`${sizeStyles[size]} rounded-full bg-gray-300 items-center justify-center overflow-hidden ${className}`}
+      className={`${sizeStyles[size]} rounded-full bg-gray-3 items-center justify-center overflow-hidden ${className}`}
     >
       {source ? (
         <Image source={source} className="w-full h-full" resizeMode="cover" />

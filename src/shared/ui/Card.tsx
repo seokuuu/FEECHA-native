@@ -23,15 +23,13 @@ export const Card: React.FC<CardProps> = ({
     lg: "p-6",
   };
 
-  const baseStyles = `bg-white rounded-lg ${paddingStyles[padding]} ${
-    shadow ? "shadow-sm" : ""
-  }`;
+  const baseClass = `bg-card rounded-large ${paddingStyles[padding]} ${shadow ? "shadow-card" : ""}`;
 
   if (onPress) {
     return (
       <TouchableOpacity
         onPress={onPress}
-        className={`${baseStyles} ${className}`}
+        className={`${baseClass} ${className}`}
         activeOpacity={0.7}
       >
         {children}
@@ -39,5 +37,5 @@ export const Card: React.FC<CardProps> = ({
     );
   }
 
-  return <View className={`${baseStyles} ${className}`}>{children}</View>;
+  return <View className={`${baseClass} ${className}`}>{children}</View>;
 };

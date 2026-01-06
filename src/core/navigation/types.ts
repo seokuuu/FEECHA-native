@@ -34,7 +34,8 @@ export type MainStackParamList = {
   // Common Modal/Stack Screens
   VendorDetail: { vendorId: string };
   RequestDetail: { requestId: string };
-  RequestCreate: undefined;
+  RequestCreate: { vendorId?: string };
+  QuotationList: { requestId: string };
   QuotationDetail: { quotationId: string };
   QuotationCreate: { requestId: string };
   BookingDetail: { bookingId: string };

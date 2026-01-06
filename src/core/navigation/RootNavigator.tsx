@@ -11,7 +11,6 @@ const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 export function RootNavigator() {
   const { isAuthenticated, loadStoredAuth } = useAuthStore();
 
-  // 앱 시작시 저장된 인증 정보 로드
   useEffect(() => {
     loadStoredAuth();
   }, []);
@@ -21,12 +20,11 @@ export function RootNavigator() {
       screenOptions={{
         headerShown: false,
       }}
+      initialRouteName="Auth"
     >
-      {isAuthenticated ? (
-        <Stack.Screen name="Main" component={MainNavigator} />
-      ) : (
-        <Stack.Screen name="Auth" component={AuthNavigator} />
-      )}
+      {/* 개발 중: 항상 온보딩부터 시작 */}
+      <Stack.Screen name="Auth" component={AuthNavigator} />
+      <Stack.Screen name="Main" component={MainNavigator} />
     </Stack.Navigator>
   );
 }
